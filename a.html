@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>다수가 하는 카드 게임</title>
+  <style>
+    .card {
+      width: 200px;
+      height: 300px;
+      background-color: blue;
+      display: inline-block;
+      margin: 10px;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card .back {
+      display: block;
+      width: 100%;
+      height: 100%;
+      color: white;
+      font-size: 48px;
+      text-align: center;
+      line-height: 300px;
+    }
+
+    .card .front {
+      display: none;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <label for="num_players">인원 수:</label>
+  <input type="number" id="num_players" name="num_players" min="1" max="10">
+  <button onclick="startGame()">게임 시작</button>
+  <div id="cards"></div>
+  <script src="game.js"></script>
+  <script>
+    var cards = [
+      { category: "과일", word: "사과", back: "BACK", front: "사과는 과일입니다." },
+      { category: "과일", word: "바나나", back: "BACK", front: "바나나는 과일입니다." },
+      { category: "동물", word: "고양이", back: "BACK", front: "고양이는 동물입니다." },
+      { category: "동물", word: "개", back: "BACK", front: "개는 동물입니다." },
+      { category: "음식", word: "피자", back: "BACK", front: "피자는 음식입니다." },
+      { category: "음식", word: "햄버거", back: "BACK", front: "햄버거는 음식입니다." },
+      { category: "건축물", word: "집", back: "BACK", front: "집은 건축물입니다." }
+    ];
+
+    function startGame() {
+      var numPlayers = document.getElementById("num_players").value;
+      var cardContainer = document.getElementById("cards");
+      cardContainer.innerHTML = "";
+      for (var i = 0; i < numPlayers; i++) {
+        var cardIndex = Math.floor(Math.random() * cards.length);
+        var card = cards[cardIndex];
+        var cardDiv = document.createElement("div");
+        cardDiv.classList.add("card");
+        var backDiv = document.createElement("div");
+        backDiv.classList.add("back");
+        backDiv.innerHTML = card.back;
+        var frontDiv = document.createElement("div");
+        frontDiv.classList.add("front");
+        frontDiv.innerHTML = card.front;
+        cardDiv.appendChild(backDiv);
+        cardDiv.appendChild(frontDiv);
+        cardDiv.addEventListener("click", function () {
+          this.classList.toggle("flipped");
+        });
+        cardContainer.appendChild(cardDiv);
+      }
+    }
+  </script>
+</body>
+
+</html>
