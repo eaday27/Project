@@ -72,15 +72,7 @@
     const topicTitle = document.getElementById('topic-title');
     const topicContent = document.getElementById('topic-content');
     topicTitle.innerText = `Topic: ${topic}`;
-    if (topic === 'foods') {
-      topicContent.innerText = '음식';
-    } else if (topic === 'places') {
-      topicContent.innerText = '장소';
-    } else if (topic === 'jobs') {
-      topicContent.innerText = '직업';
-    } else {
-      topicContent.innerText = topic;
-    }
+
 
     // 랜덤으로 라이어 선택
     const liarIndex = Math.floor(Math.random() * playerNum);
@@ -105,8 +97,10 @@
       const isLiar = i === liarIndex;
       const card = {
         front: {
-          message: isLiar ? '라이어' : topic === '음식' ? randomFood : topic === '장소' ? randomPlace : randomJob
+          message: isLiar ? '라이어' : topic === '음식' ? randomFood : topic === '장소' ? randomPlace : topic === '직업' ? randomJob : topic === '악기' ? randomInstruments: randomfruits
         },
+
+     
         back: {
           message: '카드 뒷면(이미지)'
         },
@@ -116,32 +110,68 @@
     }
 
 
-    // 카드 렌더링
+    
     const cardContainer = document.getElementById('cards');
     cards.forEach(card => {
       const div = document.createElement('div');
       div.className = 'card';
       div.innerHTML = `
-                <div class="front">
-                    <p>${card.front.message}</p>
-                </div>
-                <div class="back">
-                    <p>${card.back.message}</p>
-                </div>
-            `;
+        <div class="front">
+          <p>${card.front.message}</p>
+        </div>
+        <div class="back" style="display: ${card.flipped ? 'block' : 'none'}">
+          <p>${card.back.message}</p>
+        </div>
+      `;
+      cardContainer.appendChild(div);
+      
+      // 카드를 선택하면 자동으로 뒤집기
       div.addEventListener('click', () => {
-        card.flipped = !card.flipped;
-        if (card.flipped) {
-          div.querySelector('.front').style.display = 'none';
+        if (!card.flipped) {
+          cards.flipped = true;
           div.querySelector('.back').style.display = 'block';
-        } else {
-          div.querySelector('.front').style.display = 'block';
-          div.querySelector('.back').style.display = 'none';
+          div.querySelector('.front').style.display = 'none';
         }
       });
-      cardContainer.appendChild(div);
     });
-  </script>
-</body>
+    let selectedCard = null;
+
+cards.forEach((card, index) => {
+  const div = document.createElement('div');
+  div.className = 'card';
+  div.innerHTML = `
+    <div class="front">
+      <p>${card.front.message}</p>
+    </div>
+    <div class="back">
+      <p>${card.back.message}</p>
+    </div>
+  `;
+  div.addEventListener('click', () => {
+    if (selectedCard === index) {
+      // 선택한 카드가 이미 선택되어 있었다면, 카드를 뒤집습니다.
+      selectedCard = null;
+      card.flipped = false;
+      div.querySelector('.front').style.display = 'block';
+      div.querySelector('.back').style.display = 'none';
+    } else {
+      // 선택한 카드가 처음 선택되었다면, 이전에 선택한 카드를 원래대로 되돌립니다.
+      if (selectedCard !== null) {
+        const prevDiv = cardContainer.children[selectedCard];
+        const prevCard = cards[selectedCard];
+        prevCard.flipped = false;
+        prevDiv.querySelector('.front').style.display = 'block';
+        prevDiv.querySelector('.back').style.display = 'none';
+      }
+      // 새로 선택된 카드를 뒤집습니다.
+      selectedCard = index;
+      card.flipped = true;
+      div.querySelector('.front').style.display = 'none';
+      div.querySelector('.back').style.display = 'block';
+    }
+  });
+  cardContainer.appendChild(div);
+});
+
 
 </html>

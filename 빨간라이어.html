@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>"라이어 게임 - 주제"</title>
+  <style>
+
+#cursor {
+        position: absolute;
+        display: none;
+        width: 50px;
+        height: 50px;
+        background-image: url('https://blog.kakaocdn.net/dn/FCDq9/btsc73p4O9Z/eb6ACEdoUnMxLvXOVNPjt1/img.png');
+        background-size: cover;
+        z-index: 9999;
+        pointer-events: none;
+      }
+    </style>
+
+<script>
+  document.addEventListener("mousemove", function(event) {
+    var x = event.clientX;
+    var y = event.clientY;
+
+    var cursor = document.getElementById("cursor");
+    cursor.style.left = x + "px";
+    cursor.style.top = y + "px";
+    cursor.style.display = "block";
+  });
+
+  document.addEventListener("mouseout", function() {
+    var cursor = document.getElementById("cursor");
+    cursor.style.display = "none";
+  });
+</script>
+</head>
+
+<style>
+	body {
+				background-color: rgb(54, 54, 54);	/* 블랙모드 배경색 */
+				color: white;   					/* 블랙모드 글자색 */
+			}
+      
+  .card {
+    width: 200px;           /* 카드의 가로 크기 */
+    height: 300px;          /* 카드의 세로 크기 */
+    margin: 20px;           /* 카드 주변 여백 */
+    background-color: #ccc; /* 카드 배경 색상 */
+    text-align: center;     /* 카드 안의 내용을 가운데 정렬 */
+    line-height: 300px;     /* 카드 안의 내용을 세로 중앙 정렬 */
+    cursor: url('/zoom-in-cursor'), default;     /*마우스를 가져다 대면 손가락 모양으로 변함 */
+    font-size: 24px;        /* 카드 안의 내용의 폰트 크기 */
+    color: #7279e1;       /* 카드 안의 내용의 글자 색상 */
+    position: relative;     /* 카드를 상대적인 위치로 배치 */
+    display: inline-block;  /* 카드를 인라인 블록으로 표시 */
+  }
+
+  .card .back {
+  background-color: rgb(0, 191, 255);
+  background-image:url('https://blog.kakaocdn.net/dn/dIfFBc/btsc03SoDN9/JCvTAlUH3qvELc4K1oNsjK/img.png');
+  background-size: 210px; 
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.card .front {
+  background-color: #aefd7d;
+  background-image:url('https://blog.kakaocdn.net/dn/cb9UVv/btsc9apnUwp/xq2orPlAq2GN0680bAjKfK/img.png');
+  background-size: 210px; 
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+  .card .back p {
+    margin: 0;
+    font-size: 18px;
+
+  }
+
+  #topic-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+</style>
+
+<body>
+  <div id="topic-title"></div>
+  <div id="topic-content"></div>
+  <div id="cards"></div>
+  <div id="cursor"></div>
+ 
+
+  <script>
+
+  
+  const title = '주제: ${topic}';
+  document.title = `라이어 게임`;
+
+    // 참가 인원 수와 주제를 가져오기
+    const playerNum = Number(new URLSearchParams(window.location.search).get('player_num'));
+    const topic = new URLSearchParams(window.location.search).get('topic');
+    const topicTitle = document.getElementById('topic-title');
+    const topicContent = document.getElementById('topic-content');
+    topicTitle.innerText = `Topic: ${topic}`;
+
+
+    // 랜덤으로 라이어 선택
+    const liarIndex = Math.floor(Math.random() * playerNum);
+
+    // 랜덤 음식, 장소, 직업 선택
+    const foods = ['떡볶이', '마라탕', '김밥', '돈까스', '우동', '쫄면', '츄러스', '푸아그라', '스테이크', '파스타', '하와이안피자', '페퍼로니피자', '밥', '죽', '잔치국수', '만두', '떡국', '수제비', '명란젓', '김치', '샐러드', '샌드위치', '빵', '삼계탕', '삼겹살', '불고기', '잡채', '냉면', '김치찌개','국밥', '짜장면', '짬뽕', '탕수육', '초밥', '닭볶음탕', '치킨', '팟타이', '쌀국수', '똠양꿍', '간장게장', '칼국수', '된장찌개', '간장계란밥'];
+    const places = ['학교', '집', '놀이공원', '바다'];
+    const jobs = ['연예인', '선생님', '운전기사'];
+    const instruments=['악기1','악기2'];
+    const fruits=['과일1','과일2'];
+
+
+    const randomFood = foods[Math.floor(Math.random() * foods.length)];
+    const randomPlace = places[Math.floor(Math.random() * places.length)];
+    const randomJob = jobs[Math.floor(Math.random() * jobs.length)];
+    const randomInstruments = instruments[Math.floor(Math.random() * instruments.length)];
+    const randomfruits = fruits[Math.floor(Math.random() * fruits.length)];
+
+    // 카드 생성
+    const card = {
+      front: {
+        message: isLiar 
+          ? '<span style="color:red;">라이어</span>' 
+          : topic === '음식' 
+          ? randomFood 
+          : topic === '장소' 
+          ? randomPlace 
+          : topic === '직업' 
+          ? randomJob 
+          : topic === '악기' 
+          ? randomInstruments
+          : randomfruits
+      },
+      back: {
+        message: ''  
+      },
+      flipped: false
+    },
+    
+      cards.push(card);
+    }
+
+
+    // 카드 렌더링
+    const cardContainer = document.getElementById('cards');
+    cards.forEach(card => {
+      const div = document.createElement('div');
+      div.className = 'card';
+      div.innerHTML = `
+                <div class="front">
+                    <p>${card.front.message}</p>
+                </div>
+                <div class="back">
+                    <p>${card.back.message}</p>
+                </div>
+            `;
+      div.addEventListener('click', () => {
+        card.flipped = !card.flipped;
+        if (card.flipped) {
+          div.querySelector('.front').style.display = 'none';
+          div.querySelector('.back').style.display = 'block';
+        } else {
+          div.querySelector('.front').style.display = 'block';
+          div.querySelector('.back').style.display = 'none';
+        }
+      });
+      cardContainer.appendChild(div);
+    });
+  </script>
+</body>
+
+</html>
