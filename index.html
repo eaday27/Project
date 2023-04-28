@@ -1,94 +1,99 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Flip Card</title>
-    <style>
-        .card {
-            width: 200px;
-            height: 300px;
-            background-color: red;
-            margin: 50px auto;
-        }
-        .card-back {
-            display: block;
-            width: 100%;
-            height: 100%;
-            background-color: blue;
-            text-align: center;
-            color: white;
-            font-size: 24px;
-            padding-top: 100px;
-            box-sizing: border-box;
-        }
-        .card-front {
-            display: none;
-            width: 100%;
-            height: 100%;
-            background-color: yellow;
-        }
-    </style>
+  <title>Flip Card</title>
+  <style>
+    .card {
+      width: 200px;
+      height: 300px;
+      background-color: red;
+      margin: 50px auto;
+    }
+
+    .card-back {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: blue;
+      text-align: center;
+      color: white;
+      font-size: 24px;
+      padding-top: 100px;
+      box-sizing: border-box;
+    }
+
+    .card-front {
+      display: none;
+      width: 100%;
+      height: 100%;
+      background-color: yellow;
+    }
+  </style>
 </head>
+
 <body>
 
-	<!-- 카드 앞면과 뒷면을 나타내는 div -->
-	<div id="card" class="card-back"></div>
+  <!-- 카드 앞면과 뒷면을 나타내는 div -->
+  <div id="card" class="card-back"></div>
 
-    <script>
-		// 카드 뒤집기를 제한하는 횟수 변수
-		let flips_left = 2;
+  <script>
+    // 카드 뒤집기를 제한하는 횟수 변수
+    let flips_left = 2;
 
-		// 뒤집힌 횟수를 저장하는 변수
-		let flip_count = 0;
+    // 뒤집힌 횟수를 저장하는 변수
+    let flip_count = 0;
 
-		// 카드가 뒤집혔는지 여부를 나타내는 변수
-		let is_face_up = false;
+    // 카드가 뒤집혔는지 여부를 나타내는 변수
+    let is_face_up = false;
 
-		// 카드 색깔을 저장하는 변수
-		let card_color = "red";
+    // 카드 색깔을 저장하는 변수
+    let card_color = "red";
 
-		// 카드를 뒤집는 함수
-		function flip_card() {
-			if (flips_left > 0) {
-				// 카드 뒤집기를 제한하는 횟수가 남아있는 경우
-				if (!is_face_up) {
-					// 카드가 뒷면일 때
-					document.getElementById("card").classList.remove("back");
-					document.getElementById("card").classList.add("front");
-					is_face_up = true;
-					flip_count += 1;
-				} else {
-					// 카드가 앞면일 때
-					document.getElementById("card").classList.remove("front");
-					document.getElementById("card").classList.add("back");
-					is_face_up = false;
-					flip_count += 1;
-				}
-				// 뒤집기 횟수를 하나 감소시킴
-				flips_left -= 1;
-				// 만약 더 이상 뒤집을 수 없는 경우, 카드 색깔을 바꿈
-				if (flips_left == 0) {
-					document.getElementById("card").style.backgroundColor = "blue";
-				}
-			}
-		}
+    // 카드를 뒤집는 함수
+    function flip_card() {
+      if (flips_left > 0) {
+        // 카드 뒤집기를 제한하는 횟수가 남아있는 경우
+        if (!is_face_up) {
+          // 카드가 뒷면일 때
+          document.getElementById("card").classList.remove("card-back");
+          document.getElementById("card").classList.add("card-front");
+          is_face_up = true;
+          flip_count += 1;
+        } else {
+          // 카드가 앞면일 때
+          document.getElementById("card").classList.remove("card-front");
+          document.getElementById("card").classList.add("card-back");
+          is_face_up = false;
+          flip_count += 1;
+        }
+        // 뒤집기 횟수를 하나 감소시킴
+        flips_left -= 1;
+        // 만약 더 이상 뒤집을 수 없는 경우, 카드 색깔을 바꿈
+        if (flips_left == 0) {
+          document.getElementById("card").style.backgroundColor = "blue";
+        }
+      }
+    }
 
-		// 카드 뒤집기 버튼에 이벤트 리스너 등록
-		document.getElementById("flip-btn").addEventListener("click", flip_card);
-        var card = document.querySelector('.card');
-        var cardBack = document.querySelector('.card-back');
-        var cardFront = document.querySelector('.card-front');
-        var isFlipped = false;
+    // 카드 뒤집기 버튼에 이벤트 리스너 등록
+    document.getElementById("flip-btn").addEventListener("click", flip_card);
+    var card = document.querySelector('.card');
+    var cardBack = document.querySelector('.card-back');
+    var cardFront = document.querySelector('.card-front');
+    var isFlipped = false;
 
-        card.addEventListener('click', function() {
-            if (!isFlipped) {
-                cardBack.style.display = 'none';
-                cardFront.style.display = 'block';
-            } else {
-                cardBack.style.display = 'block';
-                cardFront.style.display = 'none';
-            }
-            isFlipped = !isFlipped;
-        });
-    </script>
+    card.addEventListener('click', function () {
+      if (!isFlipped) {
+        cardBack.style.display = 'none';
+        cardFront.style.display = 'block';
+      } else {
+        cardBack.style.display = 'block';
+        cardFront.style.display = 'none';
+      }
+      isFlipped = !isFlipped;
+    });
+  </script>
 </body>
+
 </html>
