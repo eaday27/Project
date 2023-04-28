@@ -4,25 +4,72 @@
 
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<br><br>
 	<title>라이어 게임</title>
+	<style>
+		@font-face {
+		  font-family: 'EF_jejudoldam';
+		  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_jejudoldam.woff2') format('woff2');
+		  font-weight: normal;
+		  font-style: normal;
+		}
+
+		@font-face {
+    font-family: 'KCC-Ganpan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MaplestoryOTFBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+  
+		h1 {
+        font-family: 'EF_jejudoldam', sans-serif;
+		font-size: 300%;
+		color: yellow;
+      }
+
+
+	  body {
+         background-color: rgb(54, 54, 54); /* 블랙모드 배경색 */
+         color: white; /* 블랙모드 글자색 */
+		 font-family: 'KCC-Ganpan', sans-serif;
+	  font-size: 130%;                  /* 블랙모드 글자색 */
+         background-image: url('https://cdn-icons-png.flaticon.com/512/71/71403.png');
+         background-repeat: no-repeat; /* 이미지 반복하지 않음 */
+         background-position: 58% -10%; /* 이미지 위치 조절 */
+         background-size: auto; /* 이미지 크기 자동 조절 */
+         text-align: center; /* 내용을 가운데 정렬 */
+      }
+
+
+	  </style>
 </head>
 
-<body>
+<body style="text-align: center;">
 	<style>
-			body {
-				background-color: rgb(54, 54, 54);	/* 블랙모드 배경색 */
-				color: white;   					/* 블랙모드 글자색 */
-			}
-
+		body {
+			background-color: rgb(54, 54, 54); /* 블랙모드 배경색 */
+			color: white; /* 블랙모드 글자색 */
+			background-image: url('https://cdn-icons-png.flaticon.com/512/71/71403.png');
+			background-repeat: no-repeat; /* 이미지 반복하지 않음 */
+			background-position: 58% -70%; /* 이미지 위치 조절 */
+			background-size: auto; /* 이미지 크기 자동 조절 */
+			text-align: center; /* 내용을 가운데 정렬 */
+		}
 	</style>
+
 	<h1>라이어 게임</h1>
-	<button onclick="location.href='게임설명.html'">게임설명</button>
-	<form action="게임화면.html" method="get">
-		
+
+	<form action="게임화면.html" method="get">		
 
 		<label for="player_num">참가 인원:</label>
 		<input type="number" id="player_num" name="player_num" min="3" required><br><br>
-		<img src="http://ggoreb.com/images/luffy.jpg" alt="" width="100px"> <br>
+		<!-- <img src="https://cdn-icons-png.flaticon.com/512/71/71403.png" alt="" width="100px"> <br> -->
 		<label for="topic"><strong>주제</strong></label><br>
 		<input type="radio" id="topic1" name="topic" value="음식">
 		<label for="topic1">음식</label>
@@ -48,10 +95,19 @@
 		<label for="topic11">기타</label>
 		<input type="radio" id="topic12" name="topic" value="랜덤">
 		<label for="topic12">랜덤</label><br>
+		<br>
+		<!-- <input type="submit" value="게임 시작하기">
+	
+		<button onclick="location.href='게임설명.html'">게임설명</button> -->
+
+		<input type="submit" value="게임 시작하기" style="font-size: 18px; padding: 8px 10px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; font-family: 'MaplestoryOTFBold', sans-serif;">
+
+		<button onclick="location.href='게임설명.html'" style="font-size: 18px; padding: 8px 10px; background-color: #008CBA; color: white; border: none; border-radius: 4px; cursor: pointer; font-family: 'MaplestoryOTFBold', sans-serif;">게임설명</button>
+
 		
 		<input type="submit" value="게임 시작하기">
-	
-		
+		<button onclick="location.href='게임설명.html'">게임설명</button>
+			
 	</form>
 </body>
 
