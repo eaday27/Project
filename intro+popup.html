@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 
 <html>
-	<head>
+
+<head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>라이어 게임</title>
 </head>
+
 <body>
 	<style>
+			body {
+				background-color: rgb(54, 54, 54);	/* 블랙모드 배경색 */
+				color: white;   					/* 블랙모드 글자색 */
+			}
+
 		#popup {
 			display: none;
 			position: absolute;
@@ -18,10 +25,11 @@
 			border: 1px solid #ccc;
 			padding: 10px;
 			text-align: center;
-		  }
-		  #button:hover + #popup {
+		}
+
+		#button:hover+#popup {
 			display: block;
-		  }
+		}
 	</style>
 	<h1>라이어 게임</h1>
 	<form action="game.html" method="get">
@@ -59,14 +67,15 @@
 	</form>
 </body>
 <script>
-    // Optional JavaScript to close the popup when user clicks outside of it
-    window.addEventListener('click', function(e){
-      if (document.getElementById('popup').contains(e.target)){
-        // Click inside the popup, do nothing
-      } else {
-        // Click outside the popup, close it
-        document.getElementById('popup').style.display = 'none';
-      }
-    });
-  </script>
+	// Optional JavaScript to close the popup when user clicks outside of it
+	window.addEventListener('click', function (e) {
+		if (document.getElementById('popup').contains(e.target)) {
+			// Click inside the popup, do nothing
+		} else {
+			// Click outside the popup, close it
+			document.getElementById('popup').style.display = 'none';
+		}
+	});
+</script>
+
 </html>

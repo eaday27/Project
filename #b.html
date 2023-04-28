@@ -1,56 +1,4 @@
-<style>
 
-#cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.card {
-  width: 200px;
-  height: 300px;
-  margin: 10px;
-  border-radius: 10px;
-  perspective: 1000px;
-}
-
-.card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-}
-
-.card-front {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  transform: rotateY(180deg);
-  backface-visibility: hidden;
-}
-
-.category {
-  font-size: 2rem;
-  text-align: center;
-  margin-top: 5rem;
-}
-
-.word {
-  font-size: 3rem;
-  text-align: center;
-  margin-top: 1rem;
-}
-
-.card.flipped .card-front {
-  transform: rotateY(0deg);
-}
-
-.card.flipped .card-back {
-  transform: rotateY(-180deg);
-}
-</style>
 
 <body>
   <div id="cards-container">
@@ -99,5 +47,39 @@ cards.forEach((card) => {
 });
 
 </script>
+
+
+
+  <input type="number">
+  <button onclick="startGame()">게임 시작</button>
+
+  <script>
+
+    // 카드 뒷면에 클릭 이벤트 등록
+    const cards = document.querySelectorAll('.card');
+    cards.forEach((card) => {
+      card.addEventListener('click', showFront);
+    });
+
+    // 카드를 뒤집는 함수
+    function flipCard() {
+      this.classList.toggle('flipped');
+    }
+
+    // 카드를 클릭했을 때 앞면을 보여주는 함수
+    function showFront() {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach((card) => {
+        card.removeEventListener('click', showFront);
+        card.addEventListener('click', flipCard);
+      });
+
+      const category = document.querySelectorAll('.category');
+      const randomIndex = Math.floor(Math.random() * category.length);
+      category[randomIndex].style.display = 'block';
+    }
+
+
+  </script>
 
 </body>
