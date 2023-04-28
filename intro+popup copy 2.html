@@ -27,9 +27,7 @@
 			text-align: center;
 		}
 
-		#button:hover+#popup {
-			display: block;
-		}
+
 	</style>
 	<h1>라이어 게임</h1>
 	<form action="game copy -은아 쓰는 중.html" method="get">
@@ -64,18 +62,8 @@
 		<input type="submit" value="게임 시작하기">
 		<button id="button">게임설명</button>
 		<div id="popup">김도이씨 게임설명넣어요!</div>
+		<button onclick="location.href='게임설명'">게임설명</button>
 	</form>
 </body>
-<script>
-	// Optional JavaScript to close the popup when user clicks outside of it
-	window.addEventListener('click', function (e) {
-		if (document.getElementById('popup').contains(e.target)) {
-			// Click inside the popup, do nothing
-		} else {
-			// Click outside the popup, close it
-			document.getElementById('popup').style.display = 'none';
-		}
-	});
-</script>
 
 </html>
