@@ -41,19 +41,15 @@
       height: 50px;
       background-image: url("https://blog.kakaocdn.net/dn/R16yG/btsddHIqOIQ/FfroKtGaxzxv1hEZnVs8P0/img.png");
       background-size: cover;
-      /* 배경이미지 자동 확대.축소 */
       z-index: 9999;
-      /* 위치지정, 숫자 클 수록 위에 있음 */
       transform: translate(-50%, -50%);
       pointer-events: none;
-      /* 마우스 이벤트가 발생해도 요소에 지장 없게함 */
     }
   </style>
 
   <script>
     document.addEventListener("mousemove", function (event) {
-      // 마우스 이동 시 좌표값 가져오기
-      var x = event.clientX + window.pageXOffset; // 스크롤된 좌표값 더함
+      var x = event.clientX + window.pageXOffset;
       var y = event.clientY + window.pageYOffset;
 
 
@@ -64,7 +60,6 @@
     });
 
     document.addEventListener("mouseout", function () {
-      // 마우스가 영역 밖으로 나갈 때 cursor 숨기기
       var cursor = document.getElementById("cursor");
       cursor.style.display = "none";
     });
@@ -74,31 +69,20 @@
 <style>
   body {
     background-color: rgb(54, 54, 54);
-    /* 블랙모드 배경색 */
     color: white;
-    /* 블랙모드 글자색 */
   }
 
   .card {
     width: 210px;
-    /* 카드의 가로 크기 */
     height: 297px;
-    /* 카드의 세로 크기 */
     margin: 20px;
-    /* 카드 주변 여백 */
     text-align: center;
-    /* 카드 안의 내용을 가운데 정렬 */
 
     cursor: url('/zoom-in-cursor'), default;
-    /*마우스를 가져다 대면 손가락 모양으로 변함 */
     font-size: 18px;
-    /* 카드 안의 내용의 폰트 크기 */
     color: #2f2f2f;
-    /* 카드 안의 내용의 글자 색상 */
     position: relative;
-    /* 카드를 상대적인 위치로 배치 */
     display: flex;
-    /* 카드를 인라인 블록으로 표시 */
   }
 
   .card .back {
@@ -157,7 +141,6 @@
 
 
 
-    // 참가 인원 수와 주제를 가져오기
     const playerNum = Number(new URLSearchParams(window.location.search).get('player_num'));
     let topic = new URLSearchParams(window.location.search).get('topic');
     const topics = ['음식', '장소', '직업', '악기', '과일', '국가', '인물', '동물', '스포츠', '영화'];
@@ -171,10 +154,8 @@
 
 
 
-    // 랜덤으로 라이어 선택
     const liarIndex = Math.floor(Math.random() * playerNum);
 
-    // 랜덤 음식, 장소, 직업 선택
     const foods = ['떡볶이', '마라탕', '김밥', '돈까스', '우동', '쫄면', '츄러스', '푸아그라', '스테이크', '파스타', '하와이안피자', '페퍼로니피자', '밥', '죽', '잔치국수', '만두', '떡국', '수제비', '명란젓', '김치', '샐러드', '샌드위치', '빵', '삼계탕', '삼겹살', '불고기', '잡채', '냉면', '김치찌개', '국밥', '짜장면', '짬뽕', '탕수육', '초밥', '닭볶음탕', '치킨', '팟타이', '쌀국수', '똠양꿍', '간장게장', '칼국수', '된장찌개', '간장계란밥', '대창', '막창', '곱창', '족발', '순대', '오소리감투', '약과', '감자튀김', '쭈꾸미볶음', '호두과자', '양꼬치', '라면', '갈비찜', '설렁탕', '매운탕', '육회', '밀푀유나베', '닭강정', '군밤', '물회', '불닭볶음면', '군밤', '붕어빵', '취두부', '홍어삼합', '추어탕', '해장국', '샤브샤브', '선지국', '냉면', '밀면', '쫄면', '볶음우동', '장어구이', '장어덮밥', '해물파전', '카레', '규카즈', '갈비', '항정살', '안창살', '업진살', '깐풍기', '유산슬', '편육', '동파육', '어향가지', '수육', '보쌈', '메로구이'];
     const places = ['하이마트', '카페', '병원', '초등학교', '중학교', '고등학교', '학원', '대학교', '운동장', '놀이터', '공원', '은행', '백화점', '지하도', '박물관', '시청', '공항', '버스정류장', '지하철역', '거실', '대형마트', '주방', '화장실', '영화관', '미술관', '터미널', '편의점', '엘레베이터', '강남역', '주민센터', '경찰서', '슈퍼마켓', '우체국', '교육청', '시장', '아파트', '공연장', '헬스장', '야구장', '축구장', '기숙사', '자동차정비소', '지하상가', '오피스텔', '댐', '공장', '도서관', '독서실', '운전학원', '미용실', '호텔', '공사장', '밭', '논', '마당', '클럽', '주유소', '교회', '성당', '세탁소', '문구점', '약국', '올리브영', '서점', '주차장', '볼링장', '수영장', '극장', '골프장', '공중화장실', '광장', '사무실', '식당', '동물원', '육교', '해수욕장', '베이커리', '법원', '투썸플레이스', '스타벅스', '학교', '집', '에버랜드', '롯데월드', '바다',];
     const jobs = ['건축가', '물리치료사', '도수치료사', '심리상담사', '경찰', '화가', '피아니스트', '바이올리니스트', '첼리스트', '디자이너', '유튜버', '가수', '사육사', '애견미용사', '수의사', '선생님', '모델', '한복디자이너', '치과의사', '치위생사', '셰프(요리사)', '변리사', '병아리 감별사', '소방관', '약사', '간호사', '의사', '운동선수', '교수', '요리사', '프로게이머', '디자이너', '국회의원', '장의사', '버스기사', '목사', '타투이스트', '스님', '신부님', '수녀님', '대통령', '국무총리', '레고 모델 조립사', '디지털 장의사', '해커', '미스터리 쇼퍼', '퍼스널 쇼퍼', '쇼호스트', '해녀', '가수', '공무원', 'MC', '관세사', '편의점직원', '프랍트레이더', '카지노 딜러', '농부', '부동산 중개인', '스포츠 심판', '용접', '조각가', '자동차 정비사', '도배 기술자', '측량 기술자', '변호사', '판사', '검사', '방문판매원', '군인', '정원사', '회계사', '사서', '세무사', '노무사', '시계수리공', '기자', '컬러리스트', '은행원', '웨딩플래너', '여행가이드', '청소년상담사', '리포터', '아나운서', '승무원', '파일럿', '택시기사', '개발자', '주식트레이더', '펀드매니져', '포험판매원', '손해사정사', '감정평가사', '재무관리사', '안전관리사', '중고차딜러', '골프캐디', '행정사', '금형기능사', '영상편집자', '미용사', '피부관리사', '비서', '변리사', '사회복지사', '보석감정사', '건축가', '조주기능사', '펫푸드테스터', '골프공다이버', '불꽃디자이너', '바리스타', '소믈리에', '파티셰', '메이크업아티스트', '사진사', '화훼장식사', '직업상담사'];
@@ -200,7 +181,6 @@
     const randomall = all[Math.floor(Math.random() * all.length)];
 
 
-    // 카드 생성
     const cards = [];
     for (let i = 0; i < playerNum; i++) {
       const isLiar = i === liarIndex;
@@ -215,12 +195,10 @@
     }
 
 
-    // 카드 렌더링
     const cardContainer = document.getElementById('cards');
     cards.forEach(card => {
       const div = document.createElement('div');
       div.className = 'card';
-      //5글자 이상 줄바꿈
       const frontMessage = card.front.message.length >= 5 ? card.front.message.slice(0, 4) + '<br>' + card.front.message.slice(4) : card.front.message;
       const backMessage = card.back.message.length >= 5 ? card.back.message.slice(0, 4) + '<br>' + card.back.message.slice(4) : card.back.message;
       div.innerHTML = `
@@ -231,7 +209,6 @@
 
 
 
-      //확인한 카드 제거
       let clickCount = 0;
       div.addEventListener('click', event => {
         clickCount++;
