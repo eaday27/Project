@@ -1,9 +1,172 @@
-라운드가 끝난 후 라이어 지목 버튼을 눌러주세요?
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>타이머 예제</title>
+    <style>
+        body{
+            text-align: center;
+            background-color: black;
+        }
+        h1,p{
+            color: white;
+        }
+        @import url(https://fonts.googleapis.com/css?family=Lato:300);
+    .container {
+        text-align: center;
+        background-color: #e74c3c;
+        overflow: hidden;
+    }
+    .box:nth-child(2n-1) {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+    .box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .box p {
+        color: #777;
+        font-family: Lato, "Helvetica Neue";
+        font-weight: 300;
+        position: absolute;
+        font-size: 20px;
+        width: 100%;
+        height: 25px;
+        text-align: center;
+        bottom: 0px;
+        margin: 0;
+        top: 160px;
+        background-color: #fff;
+        opacity: 0;
+        text-transform: uppercase;
+        transition: all .2s ease;
+    }
+    .box:hover p {
+        bottom: 0px;
+        top: 175px;
+        opacity: 1;
+        transition: all .2s ease;
+        z-index: 2;
+    }
+    /* MEDIA QUERIES */
+    @media (max-width: 700px) {
+        .box {
+            width: 50%;
+        }
 
-마지막 논의를 해주세요?
-시간은 30초 제한
-5초 이하는 css로 빨간 글씨
-java에 time함수
+        .box:nth-child(2n-1) {
+            background-color: inherit;
+        }
+        .box:nth-child(4n),
+        .box:nth-child(4n-3) {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+    }
+    @media (max-width: 420px) {
+        .box {width: 100%;}
+        .box:nth-child(4n),
+        .box:nth-child(4n-3) {background-color: inherit;}
+        .box:nth-child(2n-1) {background-color: rgba(0, 0, 0, 0.05);}
+    }
+    .clock {
+        border-radius: 60px;
+        border: 3px solid #fff;
+        height: 80px;
+        width: 80px;
+        position: relative;
+    }
+    .clock:after {
+        content: "";
+        position: absolute;
+        background-color: #fff;
+        top: 2px;
+        left: 48%;
+        height: 38px;
+        width: 4px;
+        border-radius: 5px;
+        -webkit-transform-origin: 50% 97%;
+        transform-origin: 50% 97%;
+        -webkit-animation: grdAiguille 2s linear infinite;
+        animation: grdAiguille 2s linear infinite;
+    }
+    @-webkit-keyframes grdAiguille {
+        0% {-webkit-transform: rotate(0deg);}
+        100% {-webkit-transform: rotate(360deg);}
+    }
 
+    @keyframes grdAiguille {
+        0% {transform: rotate(0deg);}
+        100% {transform: rotate(360deg);}
+    }
 
+    .clock:before {
+        content: "";
+        position: absolute;
+        background-color: #fff;
+        top: 6px;
+        left: 48%;
+        height: 35px;
+        width: 4px;
+        border-radius: 5px;
+        -webkit-transform-origin: 50% 94%;
+        transform-origin: 50% 94%;
+        -webkit-animation: ptAiguille 12s linear infinite;
+        animation: ptAiguille 12s linear infinite;
+    }
 
+    @-webkit-keyframes ptAiguille {
+        0% {-webkit-transform: rotate(0deg);}
+        100% {-webkit-transform: rotate(360deg);}
+    }
+
+    @keyframes ptAiguille {
+        0% {transform: rotate(0deg);}
+
+        100% {transform: rotate(360deg);}
+    }
+    </style>
+  </head>
+
+  <body>
+    <h1>타이머</h1>
+    <div class="box">
+        <div class="clock"></div>
+    </div>
+    <p>남은 시간: <span id="timer">00:30</span></p>
+    <button onclick="startTimer()">시작</button>
+    <!-- <button onclick="stopTimer()">정지</button> -->
+    
+
+    <script>
+      let timerInterval;
+      let startTime;
+      const timerElement = document.getElementById("timer");
+
+      function startTimer() {
+        startTime = Date.now();
+        timerInterval = setInterval(updateTimer, 1000);
+      }
+
+      function stopTimer() {
+        clearInterval(timerInterval);
+      }
+
+      function updateTimer() {
+        const elapsedTime = Date.now() - startTime;
+        const remainingSeconds = Math.max(0, 30 - Math.floor(elapsedTime / 1000));
+        const seconds = remainingSeconds % 60;
+        const minutes = Math.floor(remainingSeconds / 60);
+
+        timerElement.textContent = `${minutes
+          .toString()
+          .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+
+        if (remainingSeconds <= 5) {
+          timerElement.style.color = "red";
+        } else {
+          timerElement.style.color = "white";
+        }
+      }
+    </script>
+  </body>
+</html>
