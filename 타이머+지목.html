@@ -133,8 +133,8 @@
     <div class="box">
         <div class="clock"></div>
     </div>
-    <p>남은 시간: <span id="timer">00:30</span></p>
-    <button onclick="startTimer()">시작</button>
+    <p><span id="timer">30</span><br><br><br>
+    <button onclick="startTimer()"  style="font-size: 18px; padding: 8px 10px; background-color: #008CBA; color: white; border: none; border-radius: 4px; cursor: pointer; font-family: 'MaplestoryOTFBold', sans-serif;">시작</button>
     <!-- <button onclick="stopTimer()">정지</button> -->
     
 
@@ -153,14 +153,17 @@
       }
 
       function updateTimer() {
-        const elapsedTime = Date.now() - startTime;
-        const remainingSeconds = Math.max(0, 30 - Math.floor(elapsedTime / 1000));
-        const seconds = remainingSeconds % 60;
+    const elapsedTime = Date.now() - startTime;
+    const remainingSeconds = Math.max(0, 30 - Math.floor(elapsedTime / 1000));
+    timerElement.textContent = `${remainingSeconds.toString().padStart(2, "0")}`;
         const minutes = Math.floor(remainingSeconds / 60);
 
         timerElement.textContent = `${minutes
           .toString()
           .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+          
+
+          
 
         if (remainingSeconds <= 5) {
           timerElement.style.color = "red";
