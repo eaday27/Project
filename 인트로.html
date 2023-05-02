@@ -14,37 +14,37 @@
 	<br><br>
 	<title>라이어 게임</title>
 	<style>
-		   @font-face {
-      font-family: 'TTTtangsbudaejjigaeB';
-      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/TTTtangsbudaejjigaeB.woff2') format('woff2');
-      font-weight: 700;
-      font-style: normal;
-  }
+		@font-face {
+			font-family: 'TTTtangsbudaejjigaeB';
+			src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/TTTtangsbudaejjigaeB.woff2') format('woff2');
+			font-weight: 700;
+			font-style: normal;
+		}
 		@font-face {
 			font-family: 'omyu_pretty';
 			src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
 			font-weight: normal;
 			font-style: normal;
-}
+		}
 		@font-face {
-		  font-family: 'EF_jejudoldam';
-		  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_jejudoldam.woff2') format('woff2');
-		  font-weight: normal;
-		  font-style: normal;
+			font-family: 'EF_jejudoldam';
+			src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_jejudoldam.woff2') format('woff2');
+			font-weight: normal;
+			font-style: normal;
 		}
 
 		@font-face {
-    font-family: 'KCC-Ganpan';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
+		font-family: 'KCC-Ganpan';
+		src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2') format('woff2');
+		font-weight: normal;
+		font-style: normal;
+		}
 		@font-face {
-    font-family: 'MaplestoryOTFBold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+		font-family: 'MaplestoryOTFBold';
+		src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
+		font-weight: normal;
+		font-style: normal;
+		}
   
 		h1 {
         font-family: 'TTTtangsbudaejjigaeB', sans-serif;
@@ -58,11 +58,7 @@
 				color: white;
 				font-family: 'omyu_pretty', sans-serif;
 				font-size: 180%; 
-<<<<<<< HEAD
-				background-image: url('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcCt8tm%2FbtsdlqSHxqL%2FyomaPgsa0gepwHkOPUSrj1%2Fimg.png');
-=======
 				background-image: url('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdO9j5l%2FbtsdwtuWZ3B%2FKRxX9PSuzSBypWKs4xS8eK%2Fimg.png');
->>>>>>> 33d9fd46526a234f5f6b0d0c742898ec67ed3e51
 				background-repeat: no-repeat;
 				background-position: 45% -10%;
 				background-size: 30%;
@@ -71,8 +67,44 @@
 
 		input[type="radio"]:checked + label {background-color: #4CAF50;}
 
+
+    #cursor {
+      position: absolute;
+      display: none;
+      width: 50px;
+      height: 50px;
+      background-image: url("https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcgY90U%2Fbtsdxjy5xg3%2Fz2zFLWMipn6m6DuKrnDoQ1%2Fimg.png");
+      background-size: cover;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
 	  </style>
+
+
+
+		<div id="cursor"></div>
+
 	  <script>
+
+		document.addEventListener("mousemove", function (event) {
+			var x = event.clientX + window.pageXOffset;
+			var y = event.clientY + window.pageYOffset;
+
+
+			var cursor = document.getElementById("cursor");
+			cursor.style.left = x + "px";
+			cursor.style.top = y + "px";
+			cursor.style.display = "block";
+		});
+
+		document.addEventListener("mouseout", function () {
+			var cursor = document.getElementById("cursor");
+			cursor.style.display = "none";
+		});
+
+
+
 		function validateForm() {
 		   let radios = document.getElementsByName("topic");
 		   let radioChecked = false;
