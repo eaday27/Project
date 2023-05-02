@@ -11,7 +11,37 @@
         h1,p{
             color: white;
         }
-        @import url(https://fonts.googleapis.com/css?family=Lato:300);
+        @font-face {
+            font-family: 'MaplestoryOTFBold';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+      font-family: 'TTTtangsbudaejjigaeB';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/TTTtangsbudaejjigaeB.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+    }
+    @font-face {
+    font-family: 'omyu_pretty';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
     .container {
         text-align: center;
         background-color: #e74c3c;
@@ -129,12 +159,24 @@
   </head>
 
   <body>
-    <h1>타이머</h1>
+    <h1 style="color:darkorange">라이어를 찾아보아요</h1>
+    <p>30초동안 한명씩 돌아가며 제시어에 관해 설명해보아요</p>
+    <p>라이어는 정체가 밝혀지지 않도록 조심하세요</p>
+    <style>
+		h1 {
+			font-family: 'yg-jalnan',sans-serif;
+		}
+		p {
+			font-family: 'GmarketSansMedium', sans-serif;
+            font-size: 20px;
+		}
+    </style>
+    <br>
     <div class="box">
         <div class="clock"></div>
     </div>
     <p><span id="timer">30</span><br><br><br>
-    <button onclick="startTimer()"  style="font-size: 18px; padding: 8px 10px; background-color: #008CBA; color: white; border: none; border-radius: 4px; cursor: pointer; font-family: 'MaplestoryOTFBold', sans-serif;">시작</button>
+    <button onclick="startTimer()"  style="font-size: 20px; padding: 8px 20px; background-color: darkorange; color: white; border: none; border-radius: 4px; cursor: pointer; font-family: 'MaplestoryOTFBold', sans-serif;">시작</button>
     <!-- <button onclick="stopTimer()">정지</button> -->
     
 
