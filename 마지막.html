@@ -1,11 +1,6 @@
 <!DOCTYPE html>
-<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-</body>
-</html>
 <head>
 	<title>버튼</title>
 	<style>
@@ -56,19 +51,19 @@
 			background-color: #008CBA;
 			color: white;
 		}
-		
-				.button2 {
-					padding: 10px;
-					color: white;
-					border: none;
-					cursor: pointer;
-					margin: 10px;
-					font-size: 20px;
-					font-weight: bold;
-					border-radius: 8px;
-					background-color: #545454;
-					font-family: 'MaplestoryOTFBold', sans-serif;
-				}
+
+		.button2 {
+			padding: 10px;
+			color: white;
+			border: none;
+			cursor: pointer;
+			margin: 10px;
+			font-size: 20px;
+			font-weight: bold;
+			border-radius: 8px;
+			background-color: #545454;
+			font-family: 'MaplestoryOTFBold', sans-serif;
+		}
 
 		.button2:hover {
 			background-color: #d60909;
@@ -153,19 +148,19 @@
 
 
 	<script>
-		button.addEventListener('click', function() {
-  showContent(id, button);
-});
-	function showContent(id, button) {
-		var content = document.getElementById(id);
-		if (content.style.display === "none") {
-			content.style.display = "block";
-			button.classList.add('clicked');
-		} else {
-			content.style.display = "none";
-			button.classList.remove('clicked');
+		button.addEventListener('click', function () {
+			showContent(id, button);
+		});
+		function showContent(id, button) {
+			var content = document.getElementById(id);
+			if (content.style.display === "none") {
+				content.style.display = "block";
+				button.classList.add('clicked');
+			} else {
+				content.style.display = "none";
+				button.classList.remove('clicked');
+			}
 		}
-	}
 
 	</script>
 	<div class="button-container">

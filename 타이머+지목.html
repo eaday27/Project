@@ -1,12 +1,5 @@
 <!DOCTYPE html>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<body>
-    
-</body>
-</html>
-<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <head>
     <title>라이어 게임</title>
@@ -17,7 +10,8 @@
             margin-top: 80px;
         }
 
-        h1, p {
+        h1,
+        p {
             color: white;
         }
 
@@ -97,6 +91,7 @@
             transition: all .2s ease;
             z-index: 2;
         }
+
         #cursor {
             position: absolute;
             display: none;
@@ -107,7 +102,7 @@
             z-index: 9999;
             transform: translate(-50%, -50%);
             pointer-events: none;
-          }
+        }
 
         /* MEDIA QUERIES */
         @media (max-width: 700px) {
@@ -162,7 +157,7 @@
             -webkit-animation: grdAiguille 2s linear infinite;
             animation: grdAiguille 2s linear infinite;
         }
-       
+
         @-webkit-keyframes grdAiguille {
             0% {
                 -webkit-transform: rotate(0deg);
@@ -222,52 +217,52 @@
     <audio id="myAudio" src="째깍째깍.mp3"></audio>
 
 
-  <script>
-    var audio = document.getElementById("myAudio");
-    audio.loop = false;
-    var count = 0;
-  
-    function playAudio() {
-      if (count < 5) {
-        audio.play();
-        count++;
-        audio.onended = function() {
-          playAudio();
-        };
-      }
-    }
-  
-    function pauseAudio() {
-      audio.pause();
-    }
-  </script>
+    <script>
+        var audio = document.getElementById("myAudio");
+        audio.loop = false;
+        var count = 0;
+
+        function playAudio() {
+            if (count < 5) {
+                audio.play();
+                count++;
+                audio.onended = function () {
+                    playAudio();
+                };
+            }
+        }
+
+        function pauseAudio() {
+            audio.pause();
+        }
+    </script>
     <script>
 
-      document.addEventListener("mousemove", function (event) {
-          var x = event.clientX + window.pageXOffset;
-          var y = event.clientY + window.pageYOffset;
+        document.addEventListener("mousemove", function (event) {
+            var x = event.clientX + window.pageXOffset;
+            var y = event.clientY + window.pageYOffset;
 
 
-          var cursor = document.getElementById("cursor");
-          cursor.style.left = x + "px";
-          cursor.style.top = y + "px";
-          cursor.style.display = "block";
-      });
+            var cursor = document.getElementById("cursor");
+            cursor.style.left = x + "px";
+            cursor.style.top = y + "px";
+            cursor.style.display = "block";
+        });
 
-      document.addEventListener("mouseout", function () {
-          var cursor = document.getElementById("cursor");
-          cursor.style.display = "none";
-      });
-      </script>
+        document.addEventListener("mouseout", function () {
+            var cursor = document.getElementById("cursor");
+            cursor.style.display = "none";
+        });
+    </script>
 </head>
 
 <body>
     <h1 style="color:darkorange">설명이 끝난 후 라이어 색출하기</h1>
     <br>
     <div style="line-height: 0.7;">
-    <p>한명씩 차례로 제시어에 관해 설명해주세요</p>
-    <p>라이어는 정체가 밝혀지지 않도록,</p>
-    <p>다른 사람은 제시어를 들키지 않도록 조심하세요</p><br>
+        <p>한명씩 차례로 제시어에 관해 설명해주세요</p>
+        <p>라이어는 정체가 밝혀지지 않도록,</p>
+        <p>다른 사람은 제시어를 들키지 않도록 조심하세요</p><br>
     </div>
     <style>
         h1 {
@@ -284,13 +279,13 @@
         <div class="clock"></div>
     </div>
     <p><span id="timer">10</span><br></p>
-<br>
+    <br>
     <button onclick="startTimer(),playAudio()"
-    style="font-size: 20px; padding: 8px 20px; background-color: darkorange; color: white; border: none; border-radius: 4px; cursor: pointer; font-family: 'MaplestoryOTFBold', sans-serif;"
-    onmouseover="this.style.backgroundColor='red'"
-    onmouseout="this.style.backgroundColor='red'">라이어 지목 타이머가 시작됩니다</button>
+        style="font-size: 20px; padding: 8px 20px; background-color: darkorange; color: white; border: none; border-radius: 4px; cursor: pointer; font-family: 'MaplestoryOTFBold', sans-serif;"
+        onmouseover="this.style.backgroundColor='red'" onmouseout="this.style.backgroundColor='red'">라이어 지목 타이머가
+        시작됩니다</button>
 
-    <h5 style="color: #e74c3c;">※ 설명이 끝난 후 시작해주세요</h>
+    <h4 style="color: #e74c3c;">※ 설명이 끝난 후 시작해주세요</h>
         <!-- <button onclick="stopTimer()">정지</button> -->
 
 
