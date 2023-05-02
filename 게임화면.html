@@ -80,7 +80,6 @@
     height: 297px;
     margin: 20px;
     text-align: center;
-
     cursor: url('/zoom-in-cursor'), default;
     font-size: 18px;
     color: #2f2f2f;
@@ -129,7 +128,7 @@
   }
 </style>
 
-<body >
+<body>
   <div id="topic-title"></div>
   <div id="topic-content"></div>
   <div id="cards" style="display: flex;"></div>
@@ -199,6 +198,7 @@
 
 
     const cardContainer = document.getElementById('cards');
+    cardContainer.style.flexWrap = 'wrap';
     cards.forEach(card => {
       const div = document.createElement('div');
       div.className = 'card';
