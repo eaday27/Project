@@ -144,7 +144,17 @@
             -webkit-animation: grdAiguille 2s linear infinite;
             animation: grdAiguille 2s linear infinite;
         }
-
+        #cursor {
+      position: absolute;
+      display: none;
+      width: 50px;
+      height: 50px;
+      background-image: url("https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcgY90U%2Fbtsdxjy5xg3%2Fz2zFLWMipn6m6DuKrnDoQ1%2Fimg.png");
+      background-size: cover;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
         @-webkit-keyframes grdAiguille {
             0% {
                 -webkit-transform: rotate(0deg);
@@ -200,12 +210,36 @@
             }
         }
     </style>
+    <div id="cursor"></div>
+
+    <script>
+
+      document.addEventListener("mousemove", function (event) {
+          var x = event.clientX + window.pageXOffset;
+          var y = event.clientY + window.pageYOffset;
+
+
+          var cursor = document.getElementById("cursor");
+          cursor.style.left = x + "px";
+          cursor.style.top = y + "px";
+          cursor.style.display = "block";
+      });
+
+      document.addEventListener("mouseout", function () {
+          var cursor = document.getElementById("cursor");
+          cursor.style.display = "none";
+      });
+      </script>
 </head>
 
 <body>
     <h1 style="color:darkorange">설명이 끝난 후 라이어 색출하기</h1>
+    <br>
+    <div style="line-height: 0.7;">
     <p>한명씩 차례로 제시어에 관해 설명해주세요</p>
-    <p>라이어는 정체가 밝혀지지 않도록 조심하세요</p><br>
+    <p>라이어는 정체가 밝혀지지 않도록,</p>
+    <p>다른 사람은 제시어를 들키지 않도록 조심하세요</p><br>
+    </div>
     <style>
         h1 {
             font-family: 'yg-jalnan', sans-serif;
