@@ -51,6 +51,19 @@
 			background-color: #008CBA;
 			color: white;
 		}
+		
+				.button2 {
+					padding: 10px;
+					color: white;
+					border: none;
+					cursor: pointer;
+					margin: 10px;
+					font-size: 20px;
+					font-weight: bold;
+					border-radius: 8px;
+					background-color: #545454;
+					font-family: 'MaplestoryOTFBold', sans-serif;
+				}
 
 		.button2:hover {
 			background-color: #d60909;
@@ -59,19 +72,6 @@
 		.button2.clicked {
 			background-color: #d60909;
 			color: white;
-		}
-
-		.button2 {
-			padding: 10px;
-			color: white;
-			border: none;
-			cursor: pointer;
-			margin: 10px;
-			font-size: 20px;
-			font-weight: bold;
-			border-radius: 8px;
-			background-color: #545454;
-			font-family: 'MaplestoryOTFBold', sans-serif;
 		}
 
 		.content {
@@ -148,15 +148,19 @@
 
 
 	<script>
-		function showContent(id, button) {
-			var content = document.getElementById(id);
-			if (content.style.display === "none") {
-				content.style.display = "block";
-			} else {
-				content.style.display = "none";
-			}
-			button.classList.add('clicked')
+		button.addEventListener('click', function() {
+  showContent(id, button);
+});
+	function showContent(id, button) {
+		var content = document.getElementById(id);
+		if (content.style.display === "none") {
+			content.style.display = "block";
+			button.classList.add('clicked');
+		} else {
+			content.style.display = "none";
+			button.classList.remove('clicked');
 		}
+	}
 
 	</script>
 	<div class="button-container">
