@@ -3,7 +3,7 @@
 
 <head>
     <title>라이어 게임</title>
-
+<style>
     body{
     text-align: center;
     background-color: black;
@@ -217,9 +217,14 @@
                     timerElement.style.color = "white";
                 }
 
-                // 타이머가 종료되면 타이머를 멈춥니다.
+                // 타이머가 종료되면 타이머를 멈추고 버튼 텍스트를 변경합니다.
                 if (remainingSeconds <= 0) {
                     stopTimer();
+                    const button = document.querySelector("button");
+                    button.textContent = "라이어를 찾아내셨습니까";
+                    button.onclick = function() {
+                        location.href = "마지막.html";
+                    };
                 }
             }
         </script>
