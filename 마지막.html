@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html>
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</body>
+</html>
 <head>
 	<title>라이어 게임</title>
 	<style>
@@ -9,7 +15,7 @@
 			font-weight: normal;
 			font-style: normal;
 		}
-		
+
 		body {
 			background-color: rgb(54, 54, 54);
 			background-image: url('https://blog.kakaocdn.net/dn/cCt8tm/btsdlqSHxqL/yomaPgsa0gepwHkOPUSrj1/img.png');
@@ -19,7 +25,7 @@
 			text-align: center;
 			cursor: pointer;
 		}
-		
+
 		.container {
 			display: flex;
 			flex-direction: row;
@@ -27,7 +33,7 @@
 			align-items: center;
 			margin: 50px;
 		}
-    
+
 		.button {
 			padding: 10px;
 			color: white;
@@ -42,78 +48,91 @@
 		}
 
 		.button:hover {
-		background-color:#008CBA;
-	}
-		
-		.button2:hover {
-			background-color:#d60909;
+			background-color: #008CBA;
 		}
 
-		.button2 {
-			padding: 10px;
+
+		.button.clicked {
+			background-color: #008CBA;
 			color: white;
-			border: none;
-			cursor: pointer;
-			margin: 10px;
-			font-size: 20px;
-			font-weight: bold;
-			border-radius: 8px;
-			background-color: #545454;
-			font-family: 'MaplestoryOTFBold', sans-serif;
+		}
+		
+				.button2 {
+					padding: 10px;
+					color: white;
+					border: none;
+					cursor: pointer;
+					margin: 10px;
+					font-size: 20px;
+					font-weight: bold;
+					border-radius: 8px;
+					background-color: #545454;
+					font-family: 'MaplestoryOTFBold', sans-serif;
+				}
+
+		.button2:hover {
+			background-color: #d60909;
+		}
+
+		.button2.clicked {
+			background-color: #d60909;
+			color: white;
 		}
 
 		.content {
 			display: none;
 			padding: 15px;
-			background-color: hsl(40deg 87.39% 87.51% / 44%);;
-		
-			margin: 30px auto; 
+			background-color: hsl(40deg 87.39% 87.51% / 44%);
+			;
+
+			margin: 30px auto;
 			width: 50%;
 			position: relative;
-			text-align: center; 
+			text-align: center;
 			border-radius: 10px;
-    		color: white
-			}
+			color: white
+		}
 
 		.button-container {
 			position: fixed;
 			bottom: 20px;
 			left: 50%;
 			transform: translateX(-50%);
-            font-family: 'MaplestoryOTFBold', sans-serif;
-            text-align: right;
+			font-family: 'MaplestoryOTFBold', sans-serif;
+			text-align: right;
 		}
-		#cursor {
-      position: absolute;
-      display: none;
-      width: 50px;
-      height: 50px;
-      background-image: url("https://blog.kakaocdn.net/dn/R16yG/btsddHIqOIQ/FfroKtGaxzxv1hEZnVs8P0/img.png");
-      background-size: cover;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-    }
 
+		#cursor {
+			position: absolute;
+			display: none;
+			width: 50px;
+			height: 50px;
+			background-image: url("https://blog.kakaocdn.net/dn/R16yG/btsddHIqOIQ/FfroKtGaxzxv1hEZnVs8P0/img.png");
+			background-size: cover;
+			z-index: 9999;
+			transform: translate(-50%, -50%);
+			pointer-events: none;
+		}
 	</style>
 </head>
 <script>
-    document.addEventListener("mousemove", function (event) {
-      var x = event.clientX + window.pageXOffset;
-      var y = event.clientY + window.pageYOffset;
+	document.addEventListener("mousemove", function (event) {
+		var x = event.clientX + window.pageXOffset;
+		var y = event.clientY + window.pageYOffset;
 
 
-      var cursor = document.getElementById("cursor");
-      cursor.style.left = x + "px";
-      cursor.style.top = y + "px";
-      cursor.style.display = "block";
-    });
+		var cursor = document.getElementById("cursor");
+		cursor.style.left = x + "px";
+		cursor.style.top = y + "px";
+		cursor.style.display = "block";
+	});
 
-    document.addEventListener("mouseout", function () {
-      var cursor = document.getElementById("cursor");
-      cursor.style.display = "none";
-    });
-  </script>
+	document.addEventListener("mouseout", function () {
+		var cursor = document.getElementById("cursor");
+		cursor.style.display = "none";
+	});
+</script>
+
 <body>
 	<div id="cursor"></div>
 
@@ -134,19 +153,25 @@
 
 
 	<script>
-		function showContent(id) {
-			var content = document.getElementById(id);
-			if (content.style.display === "none") {
-				content.style.display = "block";
-			} else {
-				content.style.display = "none";
-			}
+		button.addEventListener('click', function() {
+  showContent(id, button);
+});
+	function showContent(id, button) {
+		var content = document.getElementById(id);
+		if (content.style.display === "none") {
+			content.style.display = "block";
+			button.classList.add('clicked');
+		} else {
+			content.style.display = "none";
+			button.classList.remove('clicked');
 		}
+	}
 
-</script>
-        <div class="button-container">
-            <button onclick="location.href='인트로.html'" style="background-color:#545454; background-image:url('https://blog.kakaocdn.net/dn/dpOgm9/btsdtFblJVL/sHrcfVbYjQkmRditHrfkVk/img.png'); background-repeat: no-repeat; background-size: 20%; background-position: 10%; padding: 10px 35px; border: none; border-radius: 5px; font-family: 'MaplestoryOTFBold';color:white;cursor: pointer;">홈으로</button>
-        </body>
+	</script>
+	<div class="button-container">
+		<button onclick="location.href='인트로.html'"
+			style="background-color:#545454; background-image:url('https://blog.kakaocdn.net/dn/dpOgm9/btsdtFblJVL/sHrcfVbYjQkmRditHrfkVk/img.png'); background-repeat: no-repeat; background-size: 20%; background-position: 10%; padding: 10px 35px; border: none; border-radius: 5px; font-family: 'MaplestoryOTFBold';color:white;cursor: pointer;">홈으로</button>
+</body>
 
 
 </html>
