@@ -50,12 +50,18 @@
 			font-style: normal;
 		}
 
+		@media (max-width: 767px) {
+			img {
+				max-width: 120%;
+				height: auto;
+			}
+		}
+
 		h1 {
 			font-family: 'TTTtangsbudaejjigaeB', sans-serif;
 			font-size: 300%;
 			color: darkorange;
 		}
-
 
 		body {
 			background-color: rgb(54, 54, 54);
@@ -64,7 +70,7 @@
 			font-size: 180%;
 			background-image: url('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdO9j5l%2FbtsdwtuWZ3B%2FKRxX9PSuzSBypWKs4xS8eK%2Fimg.png');
 			background-repeat: no-repeat;
-			background-position: 45% -10%;
+			background-position: 45% 45%;
 			background-size: 30%;
 			text-align: center;
 		}
@@ -72,7 +78,6 @@
 		input[type="radio"]:checked+label {
 			background-color: darkorange;
 		}
-
 
 		#cursor {
 			position: absolute;
@@ -97,7 +102,6 @@
 			var x = event.clientX + window.pageXOffset;
 			var y = event.clientY + window.pageYOffset;
 
-
 			var cursor = document.getElementById("cursor");
 			cursor.style.left = x + "px";
 			cursor.style.top = y + "px";
@@ -108,8 +112,6 @@
 			var cursor = document.getElementById("cursor");
 			cursor.style.display = "none";
 		});
-
-
 
 		function validateForm() {
 			let radios = document.getElementsByName("topic");

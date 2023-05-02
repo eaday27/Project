@@ -160,7 +160,7 @@
 		});
 		function showContent(id, button) {
 			var content = document.getElementById(id);
-			if (content.style.display === "none") {
+			if (content.style.display === "none" || !content.style.display) {
 				content.style.display = "block";
 				button.classList.add('clicked');
 			} else {

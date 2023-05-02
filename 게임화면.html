@@ -252,7 +252,7 @@
         }
 
         card.flipped = !card.flipped;
-        if (card.flipped) {
+        if (!card.flipped) {
           div.querySelector('.front').style.display = 'none';
           div.querySelector('.back').style.display = 'flex';
         }
