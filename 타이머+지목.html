@@ -1,218 +1,228 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>라이어 게임</title>
-    <style>
-        body{
-            text-align: center;
-            background-color: black;
-            margin-top: 100px;
-        }
-        h1,p{
-            color: white;
-        }
-        @font-face {
-            font-family: 'MaplestoryOTFBold';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-        @font-face {
-      font-family: 'TTTtangsbudaejjigaeB';
-      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/TTTtangsbudaejjigaeB.woff2') format('woff2');
-      font-weight: 700;
-      font-style: normal;
+
+    body{
+    text-align: center;
+    background-color: black;
+    margin-top: 80px;
+    }
+    h1,p{
+    color: white;
+    }
+    @font-face {
+    font-family: 'MaplestoryOTFBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    }
+    @font-face {
+    font-family: 'TTTtangsbudaejjigaeB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/TTTtangsbudaejjigaeB.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
     }
     @font-face {
     font-family: 'omyu_pretty';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
-}
-@font-face {
+    }
+    @font-face {
     font-family: 'yg-jalnan';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-}
-@font-face {
+    }
+    @font-face {
     font-family: 'GmarketSansMedium';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-}
+    }
 
     .container {
-        text-align: center;
-        background-color: #e74c3c;
-        overflow: hidden;
+    text-align: center;
+    background-color: #e74c3c;
+    overflow: hidden;
     }
     .box:nth-child(2n-1) {
-        background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.05);
     }
     .box {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     }
     .box p {
-        color: #777;
-        font-family: Lato, "Helvetica Neue";
-        font-weight: 300;
-        position: absolute;
-        font-size: 20px;
-        width: 100%;
-        height: 25px;
-        text-align: center;
-        bottom: 0px;
-        margin: 0;
-        top: 160px;
-        background-color: #fff;
-        opacity: 0;
-        text-transform: uppercase;
-        transition: all .2s ease;
+    color: #777;
+    font-family: Lato, "Helvetica Neue";
+    font-weight: 300;
+    position: absolute;
+    font-size: 20px;
+    width: 100%;
+    height: 25px;
+    text-align: center;
+    bottom: 0px;
+    margin: 0;
+    top: 160px;
+    background-color: #fff;
+    opacity: 0;
+    text-transform: uppercase;
+    transition: all .2s ease;
     }
     .box:hover p {
-        bottom: 0px;
-        top: 175px;
-        opacity: 1;
-        transition: all .2s ease;
-        z-index: 2;
+    bottom: 0px;
+    top: 175px;
+    opacity: 1;
+    transition: all .2s ease;
+    z-index: 2;
     }
     /* MEDIA QUERIES */
     @media (max-width: 700px) {
-        .box {
-            width: 50%;
-        }
+    .box {
+    width: 50%;
+    }
 
-        .box:nth-child(2n-1) {
-            background-color: inherit;
-        }
-        .box:nth-child(4n),
-        .box:nth-child(4n-3) {
-            background-color: rgba(0, 0, 0, 0.05);
-        }
+    .box:nth-child(2n-1) {
+    background-color: inherit;
+    }
+    .box:nth-child(4n),
+    .box:nth-child(4n-3) {
+    background-color: rgba(0, 0, 0, 0.05);
+    }
     }
     @media (max-width: 420px) {
-        .box {width: 100%;}
-        .box:nth-child(4n),
-        .box:nth-child(4n-3) {background-color: inherit;}
-        .box:nth-child(2n-1) {background-color: rgba(0, 0, 0, 0.05);}
+    .box {width: 100%;}
+    .box:nth-child(4n),
+    .box:nth-child(4n-3) {background-color: inherit;}
+    .box:nth-child(2n-1) {background-color: rgba(0, 0, 0, 0.05);}
     }
     .clock {
-        border-radius: 60px;
-        border: 3px solid #fff;
-        height: 80px;
-        width: 80px;
-        position: relative;
+    border-radius: 60px;
+    border: 3px solid #fff;
+    height: 80px;
+    width: 80px;
+    position: relative;
     }
     .clock:after {
-        content: "";
-        position: absolute;
-        background-color: #fff;
-        top: 2px;
-        left: 48%;
-        height: 38px;
-        width: 4px;
-        border-radius: 5px;
-        -webkit-transform-origin: 50% 97%;
-        transform-origin: 50% 97%;
-        -webkit-animation: grdAiguille 2s linear infinite;
-        animation: grdAiguille 2s linear infinite;
+    content: "";
+    position: absolute;
+    background-color: #fff;
+    top: 2px;
+    left: 48%;
+    height: 38px;
+    width: 4px;
+    border-radius: 5px;
+    -webkit-transform-origin: 50% 97%;
+    transform-origin: 50% 97%;
+    -webkit-animation: grdAiguille 2s linear infinite;
+    animation: grdAiguille 2s linear infinite;
     }
     @-webkit-keyframes grdAiguille {
-        0% {-webkit-transform: rotate(0deg);}
-        100% {-webkit-transform: rotate(360deg);}
+    0% {-webkit-transform: rotate(0deg);}
+    100% {-webkit-transform: rotate(360deg);}
     }
 
     @keyframes grdAiguille {
-        0% {transform: rotate(0deg);}
-        100% {transform: rotate(360deg);}
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
     }
 
     .clock:before {
-        content: "";
-        position: absolute;
-        background-color: #fff;
-        top: 6px;
-        left: 48%;
-        height: 35px;
-        width: 4px;
-        border-radius: 5px;
-        -webkit-transform-origin: 50% 94%;
-        transform-origin: 50% 94%;
-        -webkit-animation: ptAiguille 12s linear infinite;
-        animation: ptAiguille 12s linear infinite;
+    content: "";
+    position: absolute;
+    background-color: #fff;
+    top: 6px;
+    left: 48%;
+    height: 35px;
+    width: 4px;
+    border-radius: 5px;
+    -webkit-transform-origin: 50% 94%;
+    transform-origin: 50% 94%;
+    -webkit-animation: ptAiguille 12s linear infinite;
+    animation: ptAiguille 12s linear infinite;
     }
 
     @-webkit-keyframes ptAiguille {
-        0% {-webkit-transform: rotate(0deg);}
-        100% {-webkit-transform: rotate(360deg);}
+    0% {-webkit-transform: rotate(0deg);}
+    100% {-webkit-transform: rotate(360deg);}
     }
 
     @keyframes ptAiguille {
-        0% {transform: rotate(0deg);}
+    0% {transform: rotate(0deg);}
 
-        100% {transform: rotate(360deg);}
+    100% {transform: rotate(360deg);}
     }
-    </style>
-  </head>
 
-  <body>
-    <h1 style="color:darkorange">라이어를 찾아보아요</h1>
-    <p>30초동안 한명씩 돌아가며 제시어에 관해 설명해보아요</p>
-    <p>라이어는 정체가 밝혀지지 않도록 조심하세요</p>
+    </style>
+</head>
+
+<body>
+    <h1 style="color:darkorange">설명이 끝난 후 라이어 색출하기</h1>
+    <p>한명씩 차례로 제시어에 관해 설명해주세요</p>
+    <p>라이어는 정체가 밝혀지지 않도록 조심하세요</p><br>
     <style>
-		h1 {
-			font-family: 'yg-jalnan',sans-serif;
-		}
-		p {
-			font-family: 'GmarketSansMedium', sans-serif;
+        h1 {
+            font-family: 'yg-jalnan', sans-serif;
+        }
+
+        p {
+            font-family: 'GmarketSansMedium', sans-serif;
             font-size: 20px;
-		}
+        }
     </style>
     <br>
     <div class="box">
         <div class="clock"></div>
     </div>
-    <p><span id="timer">30</span><br><br><br>
-    <button onclick="startTimer()"  style="font-size: 20px; padding: 8px 20px; background-color: darkorange; color: white; border: none; border-radius: 4px; cursor: pointer; font-family: 'MaplestoryOTFBold', sans-serif;">시작</button>
-    <!-- <button onclick="stopTimer()">정지</button> -->
-    
+    <p><span id="timer">10</span><br></p>
+    <button onclick="startTimer()"
+        style="font-size: 20px; padding: 8px 20px; background-color: darkorange; color: white; border: none; border-radius: 4px; cursor: pointer; font-family: 'MaplestoryOTFBold', sans-serif;">라이어
+        지목 시작</button>
+    <h5 style="color: #e74c3c;">※ 설명이 끝난 후 시작해주세요</h>
+        <!-- <button onclick="stopTimer()">정지</button> -->
 
-    <script>
-      let timerInterval;
-      let startTime;
-      const timerElement = document.getElementById("timer");
 
-      function startTimer() {
-        startTime = Date.now();
-        timerInterval = setInterval(updateTimer, 1000);
-      }
+        <script>
+            let timerInterval;
+            let startTime;
+            const timerElement = document.getElementById("timer");
 
-      function stopTimer() {
-        clearInterval(timerInterval);
-      }
+            function startTimer() {
+                startTime = Date.now();
+                timerInterval = setInterval(updateTimer, 1000);
+            }
 
-      function updateTimer() {
-    const elapsedTime = Date.now() - startTime;
-    const remainingSeconds = Math.max(0, 30 - Math.floor(elapsedTime / 1000));
-    timerElement.textContent = `${remainingSeconds.toString().padStart(2, "0")}`;
-        const minutes = Math.floor(remainingSeconds / 60);
+            function stopTimer() {
+                clearInterval(timerInterval);
+            }
 
-        timerElement.textContent = `${minutes
-          .toString()
-          .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
-          
+            function updateTimer() {
+                const elapsedTime = Date.now() - startTime;
+                const remainingSeconds = Math.max(0, 10 - Math.floor(elapsedTime / 1000));
 
-          
+                // 초를 구합니다.
+                const seconds = remainingSeconds % 60;
 
-        if (remainingSeconds <= 5) {
-          timerElement.style.color = "red";
-        } else {
-          timerElement.style.color = "white";
-        }
-      }
-    </script>
-  </body>
+                // 타이머를 출력합니다.
+                timerElement.textContent = `${seconds.toString().padStart(1, "0")}`;
+
+                // 타이머 색상을 변경합니다.
+                if (remainingSeconds <= 5) {
+                    timerElement.style.color = "red";
+                } else {
+                    timerElement.style.color = "white";
+                }
+
+                // 타이머가 종료되면 타이머를 멈춥니다.
+                if (remainingSeconds <= 0) {
+                    stopTimer();
+                }
+            }
+        </script>
+</body>
+
 </html>
