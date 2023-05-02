@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>버튼</title>
+	<style>
+		@font-face {
+			font-family: 'MaplestoryOTFBold';
+			src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
+			font-weight: normal;
+			font-style: normal;
+		}
+		
+		body {
+			background-color: rgb(54, 54, 54);
+			background-image: url('https://blog.kakaocdn.net/dn/cCt8tm/btsdlqSHxqL/yomaPgsa0gepwHkOPUSrj1/img.png');
+			background-repeat: no-repeat;
+			background-position: center 0%;
+			background-size: 80%;
+			text-align: center;
+			cursor: pointer;
+		}
+		
+		.container {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			margin: 50px;
+		}
+    
+		.button {
+			padding: 10px;
+			color: white;
+			border: none;
+			cursor: pointer;
+			margin: 10px;
+			font-size: 20px;
+			font-weight: bold;
+			border-radius: 8px;
+			font-family: 'MaplestoryOTFBold', sans-serif;
+			background-color: #545454;
+		}
+
+		.button:hover {
+		background-color:#008CBA;
+	}
+		
+		.button2:hover {
+			background-color:#d60909;
+		}
+
+		.button2 {
+			padding: 10px;
+			color: white;
+			border: none;
+			cursor: pointer;
+			margin: 10px;
+			font-size: 20px;
+			font-weight: bold;
+			border-radius: 8px;
+			background-color: #545454;
+			font-family: 'MaplestoryOTFBold', sans-serif;
+		}
+
+		.content {
+			display: none;
+			padding: 15px;
+			background-color: hsl(40deg 87.39% 87.51% / 44%);;
+		
+			margin: 30px auto; 
+			width: 50%;
+			position: relative;
+			text-align: center; 
+			border-radius: 10px;
+    		color: white
+			}
+
+		.button-container {
+			position: fixed;
+			bottom: 20px;
+			left: 50%;
+			transform: translateX(-50%);
+            font-family: 'MaplestoryOTFBold', sans-serif;
+            text-align: right;
+		}
+		#cursor {
+      position: absolute;
+      display: none;
+      width: 50px;
+      height: 50px;
+      background-image: url("https://blog.kakaocdn.net/dn/R16yG/btsddHIqOIQ/FfroKtGaxzxv1hEZnVs8P0/img.png");
+      background-size: cover;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+	</style>
+</head>
+<script>
+    document.addEventListener("mousemove", function (event) {
+      var x = event.clientX + window.pageXOffset;
+      var y = event.clientY + window.pageYOffset;
+
+
+      var cursor = document.getElementById("cursor");
+      cursor.style.left = x + "px";
+      cursor.style.top = y + "px";
+      cursor.style.display = "block";
+    });
+
+    document.addEventListener("mouseout", function () {
+      var cursor = document.getElementById("cursor");
+      cursor.style.display = "none";
+    });
+  </script>
+<body>
+	<div id="cursor"></div>
+
+	<div class="container">
+		<button class="button" onclick="showContent('content1', this)">라이어색출성공</button>
+		<button class="button2" onclick="showContent('content2', this)">라이어색출실패</button>
+	</div>
+
+	<div class="content" id="content1">
+		<h2 style="font-size: 50px;">라이어 색출 성공</h2>
+		<p style="font-size: 20px;">축하드립니다. 라이어를 찾아내셨습니다.</p>
+		<p style="font-size: 20px;color:darkorange">단,라이어가 제시어를 맞출경우 라이어의 역전승입니다.</p>
+	</div>
+	<div class="content" id="content2">
+		<h2 style="font-size: 50px;">라이어 색출 실패</h2>
+		<p style="font-size: 20px;">라이어님 축하드립니다. 당신은 최고의 라이어입니다.</p>
+	</div>
+
+
+	<script>
+		function showContent(id) {
+			var content = document.getElementById(id);
+			if (content.style.display === "none") {
+				content.style.display = "block";
+			} else {
+				content.style.display = "none";
+			}
+		}
+
+</script>
+        <div class="button-container">
+            <button onclick="location.href='인트로.html'" style="background-color:#545454; background-image:url('https://blog.kakaocdn.net/dn/dpOgm9/btsdtFblJVL/sHrcfVbYjQkmRditHrfkVk/img.png'); background-repeat: no-repeat; background-size: 20%; background-position: 10%; padding: 10px 35px; border: none; border-radius: 5px; font-family: 'MaplestoryOTFBold';color:white;cursor: pointer;">홈으로</button>
+        </body>
+
+
+</html>
