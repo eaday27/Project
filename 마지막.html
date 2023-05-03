@@ -174,7 +174,6 @@
 		<p style="font-size: 20px;">라이어님 축하드립니다. 당신은 최고의 라이어입니다.</p>
 	</div>
 
-
 	<script>
 		button.addEventListener('click', function () {
 			showContent(id, button);
@@ -184,12 +183,18 @@
 			if (content.style.display === "none" || !content.style.display) {
 				content.style.display = "block";
 				button.classList.add('clicked');
+				if (id === 'content1') { // content1 클릭 시 content2의 display를 none으로 설정
+					document.getElementById('content2').style.display = 'none';
+					document.querySelector('.button2').classList.remove('clicked');
+				} else if (id === 'content2') { // content2 클릭 시 content1의 display를 none으로 설정
+					document.getElementById('content1').style.display = 'none';
+					document.querySelector('.button').classList.remove('clicked');
+				}
 			} else {
 				content.style.display = "none";
 				button.classList.remove('clicked');
 			}
 		}
-
 	</script>
 	<div class="button-container">
 		<button onclick="location.href='인트로.html'">홈으로</button>
