@@ -1,12 +1,8 @@
 <!DOCTYPE html>
-<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-
-
-
 <head>
 	<link rel="icon"
 		href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb5onxc%2Fbtsdi2FcXZs%2FcOFbGND4Kbz9JlbxB38fk0%2Fimg.png">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 	<meta property="og:url" content="공유시 이동 url">
 	<meta property="og:title" content="라이어게임">
 	<meta property="og:type" content="website">
@@ -57,7 +53,10 @@
 			img {
 				max-width: 120%;
 				height: auto;				
-				word-break: keep-all;
+				word-break: keep-all; }
+			h1 {
+				font-size: 2em;
+    		max-width: 100%;
 			}
 		}
 
@@ -96,12 +95,9 @@
 		}
 	</style>
 
-
-
 	<div id="cursor"></div>
 
 	<script>
-
 		document.addEventListener("mousemove", function (event) {
 			var x = event.clientX + window.pageXOffset;
 			var y = event.clientY + window.pageYOffset;
@@ -134,8 +130,7 @@
 	</script>
 </head>
 
-<body style="text-align: center;">
-	
+<body style="text-align: center;">	
 	<button id="playButton" style="background-color:  rgb(54, 54, 54);">
 		<img src="https://blog.kakaocdn.net/dn/crWzH9/btsdG4I3JnH/T9WWPApO8IycdUuUiJ5r3K/img.png" width="20" height="22" style="margin: 3px;">
 	</button>
