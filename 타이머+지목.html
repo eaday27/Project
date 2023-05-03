@@ -236,7 +236,7 @@
         var count = 0;
 
         function playAudio() {
-            if (count < 5) {
+            if (count < 3) {
                 audio.play();
                 count++;
                 audio.onended = function () {
@@ -269,7 +269,7 @@
 </head>
 
 <body>
-    <h1 style="color:darkorange">10초내 라이어 지목</h1>
+    <h1 style="color:darkorange">5초내 라이어 지목</h1>
     <br>
     <div style="line-height: 0.7;">
         <p>한명씩 차례로 제시어에 관해 설명해주세요</p>
@@ -290,7 +290,7 @@
     <div class="box">
         <div class="clock"></div>
     </div>
-    <p><span id="timer">10</span><br></p>
+    <p><span id="timer">5</span><br></p>
 
     <h4 id="final" style="color: #e74c3c;">※설명이 끝난 후 시작을 눌러 라이어를 지목</h4>
     <div id="button-container">
@@ -315,11 +315,11 @@
 
         function updateTimer() {
             const elapsedTime = Date.now() - startTime;
-            const remainingSeconds = Math.max(0, 10 - Math.floor(elapsedTime / 1000));
+            const remainingSeconds = Math.max(0, 5 - Math.floor(elapsedTime / 1000));
             const seconds = remainingSeconds % 60;
-            // 5초 이하 색 변경
+            // 3초 이하 색 변경
             timerElement.textContent = `${seconds.toString().padStart(1, "0")}`;
-            if (remainingSeconds <= 5) {
+            if (remainingSeconds <= 3) {
                 timerElement.style.color = "red";
             } else {
                 timerElement.style.color = "white";
@@ -328,7 +328,7 @@
             if (remainingSeconds <= 0) {
                 stopTimer();
                 const final = document.getElementById("final");
-                final.innerHTML = "시간이 종료되었습니다. 라이어를 지목 후 아래 버튼을 누르세요.";
+                final.innerHTML = "시간이 종료되었습니다. 라이어를 지목 후 아래 버튼을 누르세요.<br>";
                 const button = document.querySelector("#button-container button");
                 button.textContent = "라이어는 정체를 밝혀라!";
                 button.onclick = function () {
