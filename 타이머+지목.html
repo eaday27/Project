@@ -265,7 +265,7 @@
 </head>
 
 <body>
-    <h1 style="color:darkorange">설명이 끝난 후 라이어 색출하기</h1>
+    <h1 style="color:darkorange">10초내 라이어 지목</h1>
     <br>
     <div style="line-height: 0.7;">
         <p>한명씩 차례로 제시어에 관해 설명해주세요</p>
@@ -287,13 +287,13 @@
         <div class="clock"></div>
     </div>
     <p><span id="timer">10</span><br></p>
-    <br>
+    
+    <h4 style="color: #e74c3c;">※설명이 끝난 후 시작을 눌러 라이어를 지목</h><br><br>
     <button onclick="startTimer(),playAudio()"
         style="font-size: 20px; padding: 8px 20px; background-color: darkorange; color: white; border: none; border-radius: 4px; cursor: pointer; font-family: 'MaplestoryOTFBold', sans-serif;"
-        onmouseover="this.style.backgroundColor='red'" onmouseout="this.style.backgroundColor='red'">라이어 지목 타이머가
-        시작됩니다</button>
+        onmouseover="this.style.backgroundColor='red'" onmouseout="this.style.backgroundColor='red'">라이어색출 시작</button>
 
-    <h4 style="color: #e74c3c;">※ 설명이 끝난 후 시작해주세요</h>
+
         <!-- <button onclick="stopTimer()">정지</button> -->
 
 
@@ -326,7 +326,7 @@
                 if (remainingSeconds <= 0) {
                     stopTimer();
                     const button = document.querySelector("button");
-                    button.textContent = "라이어를 찾아내셨습니까";
+                    button.textContent = "라이어는 누구인가";
                     button.onclick = function () {
                         location.href = "마지막.html";
                     };
