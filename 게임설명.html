@@ -5,7 +5,6 @@
 	<title>라이어 게임</title>
 </head>
 
-<body>
 	<style>
 		@font-face {
 			font-family: 'MaplestoryOTFBold';
@@ -21,15 +20,14 @@
 			font-style: normal;
 		}
 
-		/* 모바일 행간조정 */
-		@media screen and (max-width: 767px) {
-			p {
-				line-height: 1.3;
-				white-space: pre-wrap;
-			}
-		}
+		@media (max-width: 767px) {
+  	p {
+    line-height: 1.5;
+    word-break: keep-all;
+  }}
 
 		body {
+			margin: 15;
 			background-color: rgb(54, 54, 54);
 			color: white;
 			text-align: center;
@@ -48,9 +46,13 @@
 
 		p {
 			font-size: medium;
+			display: flex;
+			text-align: center;
+			justify-content: center;
 		}
 	</style>
 
+<body>
 	<div>
 		<h1 style="color:darkorange">🤥게임 설명🤥</h1>
 		<p style="color:darkorange">이 게임은 우리 중에서 거짓말쟁이를 찾아내는 게임입니다.</p>
