@@ -130,7 +130,16 @@
 </head>
 
 <body style="text-align: center;">
+	<button id="playButton" style="background-color:  rgb(54, 54, 54);">
+		<img src="https://blog.kakaocdn.net/dn/crWzH9/btsdG4I3JnH/T9WWPApO8IycdUuUiJ5r3K/img.png" width="20" height="22" style="margin: 3px;">
+	</button>
+	<button id="pauseButton" style="background-color: rgb(54, 54, 54);">
+		<img src="https://blog.kakaocdn.net/dn/2suDq/btsdEDFHQFi/WDbGjWDGlr1n5pCpPsdylk/img.png" width="20" height="22" style="margin: 3px;">
+	</button>
 	<h1>라이어 게임</h1>
+
+
+<audio id="myAudio" src="인트로음원.mp3"></audio>
 
 	<form action="게임화면.html" method="get">
 
@@ -172,6 +181,18 @@
 
 	</form>
 </body>
+<script>
+	 var audio = document.getElementById("myAudio");
+  var playButton = document.getElementById("playButton");
+  var pauseButton = document.getElementById("pauseButton");
 
+  playButton.addEventListener("click", function() {
+    audio.play();
+  });
+
+  pauseButton.addEventListener("click", function() {
+    audio.pause();
+  });
+</script>
 
 </html>
