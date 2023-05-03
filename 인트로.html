@@ -134,12 +134,22 @@
 	<button id="playButton" style="background-color:  rgb(54, 54, 54);position: absolute; right: 35%; top: -1%;">
 		<img src="https://blog.kakaocdn.net/dn/crWzH9/btsdG4I3JnH/T9WWPApO8IycdUuUiJ5r3K/img.png" width="20" height="22" style="margin: 3px;">
 	</button>
-	<button id="pauseButton" style="background-color: rgb(54, 54, 54);position: absolute; right: 27%; top: -1%;">
+	<button id="pauseButton" style="background-color: rgb(54, 54, 54);position: absolute; right: 31%; top: -1%;">
 		<img src="https://blog.kakaocdn.net/dn/2suDq/btsdEDFHQFi/WDbGjWDGlr1n5pCpPsdylk/img.png" width="20" height="22" style="margin: 3px;">
 	</button>
 	</div>
 	<h1>라이어 게임</h1>
-
+	<style>
+		/* 화면 폭이 600px 이하일 때 버튼 위치 조정 */
+		@media (max-width: 600px) {
+			#playButton {
+				right: 25%;
+			}
+			#pauseButton {
+				right: 21%;
+			}
+		}
+	</style>
 
 <audio id="myAudio" src="인트로음원.mp3"></audio>
 
