@@ -3,7 +3,7 @@
 
 <head>
     <link rel="icon"
-		href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb5onxc%2Fbtsdi2FcXZs%2FcOFbGND4Kbz9JlbxB38fk0%2Fimg.png">
+        href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb5onxc%2Fbtsdi2FcXZs%2FcOFbGND4Kbz9JlbxB38fk0%2Fimg.png">
     <title>라이어 게임</title>
     <style>
         body {
@@ -216,14 +216,13 @@
         }
 
         @media only screen and (max-width: 400px) {
-        div>p {
-            line-height: 1.2;
-        }
+            div>p {
+                line-height: 1.2;
+            }
         }
     </style>
     <div id="cursor"></div>
     <audio id="myAudio" src="째깍째깍.mp3"></audio>
-
 
     <script>
         var audio = document.getElementById("myAudio");
@@ -243,9 +242,8 @@
         function pauseAudio() {
             audio.pause();
         }
-    </script>
-    <script>
 
+        //마우스 커서 위치
         document.addEventListener("mousemove", function (event) {
             var x = event.clientX + window.pageXOffset;
             var y = event.clientY + window.pageYOffset;
@@ -287,52 +285,52 @@
         <div class="clock"></div>
     </div>
     <p><span id="timer">10</span><br></p>
-    
-    <h4 style="color: #e74c3c;">※설명이 끝난 후 시작을 눌러 라이어를 지목</h><br><br>
+
+    <h4 id="final" style="color: #e74c3c;">※설명이 끝난 후 시작을 눌러 라이어를 지목</h4>
+    <div id="button-container">
     <button onclick="startTimer(),playAudio()"
-        style="font-size: 20px; padding: 8px 20px; background-color: darkorange; color: white; border: none; border-radius: 4px; cursor: pointer; font-family: 'MaplestoryOTFBold', sans-serif;"
-        onmouseover="this.style.backgroundColor='red'" onmouseout="this.style.backgroundColor='darkorange'">라이어색출 시작</button>
+            style="font-size: 20px; padding: 8px 20px; background-color: darkorange; color: white; border: none; border-radius: 4px; cursor: pointer; font-family: 'MaplestoryOTFBold', sans-serif;"
+            onmouseover="this.style.backgroundColor='red'" onmouseout="this.style.backgroundColor='darkorange'">라이어 색출 시작</button></div>
 
+    <script>
+        let timerInterval;
+        let startTime;
+        const timerElement = document.getElementById("timer");
+        const fin = document.getElementById("final");
 
-        <!-- <button onclick="stopTimer()">정지</button> -->
+        // 타이머
+        function startTimer() {
+            startTime = Date.now();
+            timerInterval = setInterval(updateTimer, 1000);
+        }
+        function stopTimer() {
+            clearInterval(timerInterval);
+        }
 
-
-        <script>
-            let timerInterval;
-            let startTime;
-            const timerElement = document.getElementById("timer");
-
-            function startTimer() {
-                startTime = Date.now();
-                timerInterval = setInterval(updateTimer, 1000);
+        function updateTimer() {
+            const elapsedTime = Date.now() - startTime;
+            const remainingSeconds = Math.max(0, 10 - Math.floor(elapsedTime / 1000));
+            const seconds = remainingSeconds % 60;
+            // 5초 이하 색 변경
+            timerElement.textContent = `${seconds.toString().padStart(1, "0")}`;
+            if (remainingSeconds <= 5) {
+                timerElement.style.color = "red";
+            } else {
+                timerElement.style.color = "white";
             }
-
-            function stopTimer() {
-                clearInterval(timerInterval);
-            }
-
-            function updateTimer() {
-                const elapsedTime = Date.now() - startTime;
-                const remainingSeconds = Math.max(0, 10 - Math.floor(elapsedTime / 1000));
-                const seconds = remainingSeconds % 60;
-
-                timerElement.textContent = `${seconds.toString().padStart(1, "0")}`;
-                if (remainingSeconds <= 5) {
-                    timerElement.style.color = "red";
-                } else {
-                    timerElement.style.color = "white";
-                }
-
-                if (remainingSeconds <= 0) {
-                    stopTimer();
-                    const button = document.querySelector("button");
-                    button.textContent = "라이어는 누구인가";
-                    button.onclick = function () {
-                        location.href = "마지막.html";
-                    };
+            //타이머 종료 후 설명.버튼 표시 내용 변경
+            if (remainingSeconds <= 0) {
+                stopTimer();
+                const final = document.getElementById("final");
+                final.innerHTML = "시간이 종료되었습니다. 라이어를 지목 후 아래 버튼을 누르세요.";
+                const button = document.querySelector("#button-container button");
+                button.textContent = "라이어는 누구인가";
+                button.onclick = function () {
+                    location.href = "마지막.html";
                 }
             }
-        </script>
+        };
+    </script>
 </body>
 
 </html>
