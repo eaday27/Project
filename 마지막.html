@@ -20,17 +20,30 @@
 			font-weight: normal;
 			font-style: normal;
 		}
+		@font-face {
+            font-family: 'GmarketSansMedium';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
 
+        @font-face {
+            font-family: 'yg-jalnan';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
 		@media (max-width: 767px) {
 			img {
 				max-width: 120%;
-				height: auto;
-				word-break: keep-all;
-				white-space: pre-wrap; 
-				word-wrap: break-word;
-				word-break: keep-all;
+				height: auto;				
+				word-break: keep-all; }
+			h2 {
+				font-size: 15px;
+    		max-width: 92%;
 			}
 		}
+
 
 		body {
 			background-color: black;
@@ -183,8 +196,30 @@
 	<div class="content" id="content2">
 		<h2 style="font-size: 50px;">라이어 색출 실패</h2>
 		<p style="font-size: 20px;">라이어님 축하드립니다. 당신은 최고의 라이어입니다.</p>
+	
 	</div>
+	<style>
+		/* 화면 폭이 600px 이하일 때 버튼 위치 조정 */
+		@media (max-width: 600px) {
+			#playButton {
+				right: 25%;
+			}
+			#pauseButton {
+				right: 21%;
+			}
+		}
+	</style>
+<Style>
+	
+	p {
+            font-family: 'GmarketSansMedium', sans-serif;
+            font-size: 20px;
+        }
 
+		h2 {
+            font-family: 'MaplestoryOTFBold', sans-serif;
+        }
+</Style>
 	<script>
 		button.addEventListener('click', function () {
 			showContent(id, button);
@@ -206,12 +241,14 @@
 				button.classList.remove('clicked');
 			}
 		}
+		
 	</script>
+	<br><br><br><br><br>
 	<div class="button-container">
 		<button onclick="location.href='인트로.html'">홈으로</button>
 
-<br><br><br><br>
-		<!--광고 -->
+
+		<!-- 광고
 	<ins class="kakao_ad_area" style="display:none;width:100%;"
 	data-ad-unit    = "DAN-z5tAm0DbIKhA1fDH"
 	data-ad-width   = "290"
@@ -226,7 +263,7 @@
 	  /*
 	   * TODO: 기능 구현
 	   */
-	}
+	} -->
    </script>
    
 </body>
